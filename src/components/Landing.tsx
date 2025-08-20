@@ -39,6 +39,16 @@ export function Landing({ onStartChat }: LandingProps) {
             소상공인을 위한 <span className="text-blue-600 font-semibold">스마트 상권 분석</span>으로<br />
             성공적인 창업을 위한 최적의 입지를 찾아드립니다
           </p>
+          
+          {/* 서울 서비스 안내 */}
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 max-w-2xl mx-auto">
+            <div className="flex items-center gap-3 text-amber-800">
+              <MapPin className="w-5 h-5" />
+              <span className="text-sm font-medium">
+                🚀 현재 서울 지역 서비스 제공 중 • 추후 전국 확장 예정
+              </span>
+            </div>
+          </div>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-gray-200 hover:border-blue-300 transition-all duration-300 hover:transform hover:scale-105 shadow-lg">
@@ -157,7 +167,7 @@ export function Landing({ onStartChat }: LandingProps) {
                   <h3 className="text-xl font-semibold text-gray-800">지역 선택</h3>
                   <p className="text-gray-600 leading-relaxed">
                     분석하고 싶은 지역을 입력해주세요.<br />
-                    서울, 부산, 대구 등 주요 도시나<br />
+                    <span className="text-amber-600 font-medium">현재 서울 지역만 서비스 제공 중</span><br />
                     구체적인 동네 이름도 가능합니다.
                   </p>
                 </div>
@@ -195,6 +205,18 @@ export function Landing({ onStartChat }: LandingProps) {
                   <li>• 업종은 가능한 한 구체적으로 입력해주세요 (예: "커피전문점" 대신 "스타벅스형 카페")</li>
                   <li>• 분석 결과는 실시간으로 업데이트되며, 최신 데이터를 반영합니다</li>
                 </ul>
+                
+                {/* 서울 서비스 안내 */}
+                <div className="mt-4 p-4 bg-amber-100 rounded-lg border border-amber-200">
+                  <div className="flex items-center gap-2 text-amber-800">
+                    <MapPin className="w-4 h-4" />
+                    <span className="text-sm font-medium">📍 서비스 지역 안내</span>
+                  </div>
+                  <p className="text-amber-700 text-sm mt-2">
+                    현재 서울 지역만 서비스 제공 중이며, 추후 전국으로 확장 예정입니다. 
+                    서울 지역의 상권 분석을 통해 창업 준비에 도움을 받으실 수 있습니다.
+                  </p>
+                </div>
               </div>
             </div>
 
