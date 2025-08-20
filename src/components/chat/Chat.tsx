@@ -117,7 +117,7 @@ export function Chat({ onBackToLanding }: ChatProps) {
                         onClick={() => handleSendMessage("종로구 부암동 자화문터널 인구포화도 등급알려줘")}
                         className="block w-full text-left p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all text-sm text-gray-700 hover:text-gray-900"
                       >
-                        "종로구 부암동 자화문터널 인구포화도 등급알려줘"
+                        "종로구 부암동 자하문터널 인구포화도 등급알려줘"
                       </button>
                       <button 
                         onClick={() => handleSendMessage("홍대입구역 1번 출구 근처에 치킨집 창업을 고려하고 있어요. 매출을 예측해 주세요.")}
