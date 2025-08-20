@@ -1,11 +1,29 @@
-import { MapPin, TrendingUp, Users, Building2, Lightbulb, BarChart3 } from "lucide-react";
+import { MapPin, TrendingUp, Users, Building2, Lightbulb, BarChart3, X, HelpCircle, Play } from "lucide-react";
 import logoImage from "../assets/Logo.png";
+import { useState } from "react";
 
-export function Landing() {
+interface LandingProps {
+  onStartChat: () => void;
+}
+
+export function Landing({ onStartChat }: LandingProps) {
+  const [showHelpModal, setShowHelpModal] = useState(false);
+
   return (
     <section className="flex-1 flex flex-col items-center justify-center p-8 relative">
       <div className="space-y-12 max-w-4xl mx-auto">
-        <div className="text-center space-y-6">
+                <div className="text-center space-y-6 relative">
+          {/* 우측 상단 시작하기 버튼 */}
+          <div className="absolute top-0 right-0">
+            <button
+              onClick={onStartChat}
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <Play className="w-5 h-5" />
+              지금 바로 시작하기
+            </button>
+          </div>  
+          
           <div className="flex items-center justify-center gap-4 mb-6">
             <img 
               src={logoImage} 
@@ -95,47 +113,103 @@ export function Landing() {
             </p>
           </div>
         </div>
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6">사용 방법</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
-                1
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800">지역 선택</h3>
-              <p className="text-gray-600 text-sm">분석하고 싶은 지역을 입력해주세요</p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
-                2
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800">업종 선택</h3>
-              <p className="text-gray-600 text-sm">창업하고자 하는 업종을 선택해주세요</p>
-            </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
-                3
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800">분석 결과</h3>
-              <p className="text-gray-600 text-sm">AI가 상세한 상권 분석 결과를 제공합니다</p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-16 text-center">
+
+        <div className="mt-16 text-center space-y-6">
           <div className="bg-gradient-to-r from-blue-500 to-teal-500 p-8 rounded-2xl shadow-xl">
             <h3 className="text-2xl font-bold text-white mb-4">
               지금 바로 상권 분석을 시작해보세요!
             </h3>
             <p className="text-blue-100 mb-6">
-              오른쪽 채팅창에서 지역명과 업종을 입력하면 AI가 상세한 분석을 제공합니다
+              아래 버튼을 클릭하여 AI 상권 분석을 시작하세요
             </p>
             <div className="flex items-center justify-center gap-2 text-blue-200">
               <div className="w-2 h-2 bg-blue-200 rounded-full animate-pulse"></div>
               <span className="text-sm">실시간 AI 분석 준비 완료</span>
             </div>
           </div>
+          
+
         </div>
       </div>
+
+      {/* 사용 방법 모달 */}
+      {showHelpModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            {/* 모달 헤더 */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-800">사용 방법</h2>
+              <button
+                onClick={() => setShowHelpModal(false)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+              >
+                <X className="w-6 h-6 text-gray-600" />
+              </button>
+            </div>
+
+            {/* 모달 내용 */}
+            <div className="p-6">
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-2xl">
+                    1
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">지역 선택</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    분석하고 싶은 지역을 입력해주세요.<br />
+                    서울, 부산, 대구 등 주요 도시나<br />
+                    구체적인 동네 이름도 가능합니다.
+                  </p>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-2xl">
+                    2
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">업종 선택</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    창업하고자 하는 업종을 선택해주세요.<br />
+                    카페, 음식점, 소매점 등<br />
+                    구체적인 업종을 명시해주세요.
+                  </p>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center mx-auto text-white font-bold text-2xl">
+                    3
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800">AI 분석</h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    AI가 상세한 상권 분석 결과를 제공합니다.<br />
+                    유동인구, 경쟁업체, 매출 예측 등<br />
+                    종합적인 정보를 확인할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+
+              {/* 추가 설명 */}
+              <div className="mt-8 p-6 bg-blue-50 rounded-xl">
+                <h4 className="text-lg font-semibold text-blue-800 mb-3">💡 사용 팁</h4>
+                <ul className="text-blue-700 space-y-2 text-sm">
+                  <li>• 구체적인 지역명을 입력하면 더 정확한 분석이 가능합니다</li>
+                  <li>• 업종은 가능한 한 구체적으로 입력해주세요 (예: "커피전문점" 대신 "스타벅스형 카페")</li>
+                  <li>• 분석 결과는 실시간으로 업데이트되며, 최신 데이터를 반영합니다</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* 모달 푸터 */}
+            <div className="flex items-center justify-center p-6 border-t border-gray-200">
+              <button
+                onClick={() => setShowHelpModal(false)}
+                className="bg-gradient-to-r from-blue-500 to-teal-500 hover:from-blue-600 hover:to-teal-600 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                확인했습니다
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
