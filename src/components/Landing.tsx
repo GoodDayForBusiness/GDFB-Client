@@ -45,7 +45,7 @@ export function Landing({ onStartChat }: LandingProps) {
             <div className="flex items-center gap-3 text-amber-800">
               <MapPin className="w-5 h-5" />
               <span className="text-sm font-medium">
-                 현재 서울 지역 서비스 제공 중 • 추후 전국 확장 예정
+                 현재 서울 지역 서비스 제공 중 • 추후 전국 확장 예정 / 업종 선택 기능 추후 업데이트 예정
               </span>
             </div>
           </div>

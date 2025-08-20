@@ -3,7 +3,7 @@ import { ChatInput } from "./ChatInput";
 import { ChatMessages } from "./ChatMessages";
 import { ChatStatus } from "./ChatStatus";
 import { useEffect, useRef, useState } from "react";
-import { MessageSquare, Sparkles, HelpCircle, X } from "lucide-react";
+import { MessageSquare, Sparkles, HelpCircle, X, MapPin } from "lucide-react";
 import logoImage from "../../assets/Logo.png";
 
 interface ChatProps {
@@ -114,16 +114,16 @@ export function Chat({ onBackToLanding }: ChatProps) {
                     <p className="text-xs text-gray-500 mb-2">💡 예시 질문:</p>
                     <div className="space-y-2">
                       <button 
-                        onClick={() => handleSendMessage("강남구 역삼동에 카페를 창업하려고 하는데 상권이 어떤가요?")}
+                        onClick={() => handleSendMessage("종로구 부암동 자화문터널 인구포화도 등급알려줘")}
                         className="block w-full text-left p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all text-sm text-gray-700 hover:text-gray-900"
                       >
-                        "강남구 역삼동에 카페를 창업하려고 하는데 상권이 어떤가요?"
+                        "종로구 부암동 자화문터널 인구포화도 등급알려줘"
                       </button>
                       <button 
-                        onClick={() => handleSendMessage("홍대입구역 근처에 치킨집 창업을 고려하고 있어요. 경쟁업체 현황과 매출 예측을 알려주세요.")}
+                        onClick={() => handleSendMessage("홍대입구역 1번 출구 근처에 치킨집 창업을 고려하고 있어요. 매출을 예측해 주세요.")}
                         className="block w-full text-left p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all text-sm text-gray-700 hover:text-gray-900"
                       >
-                        "홍대입구역 근처에 치킨집 창업을 고려하고 있어요. 경쟁업체 현황과 매출 예측을 알려주세요."
+                        "홍대입구역 1번 출구 근처에 치킨집 창업을 고려하고 있어요. 매출을 예측해 주세요."
                       </button>
                       <button 
                         onClick={() => handleSendMessage("서울 마포구 합정동에 편의점을 창업하려고 해요. 유동인구와 상권 특성을 분석해주세요.")}
@@ -221,9 +221,19 @@ export function Chat({ onBackToLanding }: ChatProps) {
                   <h3 className="text-xl font-semibold text-gray-800">AI 분석</h3>
                   <p className="text-gray-600 leading-relaxed">
                     AI가 상세한 상권 분석 결과를 제공합니다.<br />
-                    유동인구, 경쟁업체, 매출 예측 등<br />
+                    유동인구, 인구포화도, 추정 매출 등<br />
                     종합적인 정보를 확인할 수 있습니다.
                   </p>
+                </div>
+              </div>
+              
+              {/* 서울 서비스 안내 */}
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 max-w-2xl mx-auto mt-6">
+                <div className="flex items-center gap-3 text-amber-800">
+                  <MapPin className="w-5 h-5" />
+                  <span className="text-sm font-medium">
+                     현재 서울 지역 서비스 제공 중 • 추후 전국 확장 예정 / 업종 선택 추후 업데이트 예정
+                  </span>
                 </div>
               </div>
 
